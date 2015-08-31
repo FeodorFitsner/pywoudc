@@ -1,6 +1,4 @@
 environment:
-  global:
-    WITH_COMPILER: "cmd /E:ON /V:ON /C .\\appveyor\\run_with_compiler.cmd"
   matrix:
     - PYTHON: "C:\\Python27"
       PYTHON_VERSION: "2.7.x"
@@ -10,22 +8,15 @@ environment:
       PYTHON_VERSION: "2.7.x"
       PYTHON_ARCH: "64"
 
-    # Also build on a Python version not pre-installed by Appveyor.
-    # See: https://github.com/ogrisel/python-appveyor-demo/issues/10
-
-    - PYTHON: "C:\\Python266"
-      PYTHON_VERSION: "2.6.6"
-      PYTHON_ARCH: "32"
-
 install:
-  - "%WITH_COMPILER% %PYTHON%\\Scripts\\pip.exe install -r requirements.txt"
-  - "%WITH_COMPILER% %PYTHON%\\Scripts\\pip.exe install -r requirements-dev.txt"
-  - "%WITH_COMPILER% %PYTHON\\python setup.py install"
+  - "%PYTHON%\\Scripts\\pip.exe install -r requirements.txt"
+  - "%PYTHON%\\Scripts\\pip.exe install -r requirements-dev.txt"
+  - python setup.py install
 
 build: off
 
 test_script:
-  - "%WITH_COMPILER% %PYTHON\\python setup.py test"
+  - python setup.py test
 
 on_success:
   - "%PYTHON%\\Scripts\\coverage.exe run --source pywoudc setup.py test"
