@@ -10,8 +10,8 @@ environment:
 
 install:
   - python -c "from urllib2 import urlopen; exec(urlopen('https://bootstrap.pypa.io/get-pip.py').read())"
-  - pip install -r requirements.txt
-  - pip install -r requirements-dev.txt
+  - pip.exe install -r requirements.txt
+  - pip.exe install -r requirements-dev.txt
   - python setup.py install
 
 build: off
