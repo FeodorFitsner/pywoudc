@@ -18,7 +18,7 @@ environment:
       PYTHON_ARCH: "32"
 
 install:
-  - "%WITH_COMPILER% pip.exe install -r requirements.txt"
+  - "%WITH_COMPILER% %PYTHON%\\Scripts\\pip.exe install -r requirements.txt"
   - "%WITH_COMPILER% %PYTHON%\\Scripts\\pip.exe install -r requirements-dev.txt"
   - "%WITH_COMPILER% %PYTHON\\python setup.py install"
 
