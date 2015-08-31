@@ -17,8 +17,8 @@ build: off
 
 test_script:
   - python setup.py test
-  - "dir /s /b *.py | findstr /V docs | %PYTHON%\\Scripts\\xargs.exe pep8 --ignore=E402"
-  - "dir /s /b *.py | findstr /V docs | %PYTHON%\\Scripts\\xargs.exe pyflakes"
+  - "dir /s /b *.py | findstr /V docs | xargs %PYTHON%\\Scripts\\pep8 --ignore=E402"
+  - "dir /s /b *.py | findstr /V docs | xargs %PYTHON%\\Scripts\\pyflakes"
   - sphinx-apidoc -A "Tom Kralidis" -F -o docs pywoudc
   - cd docs && make html
   - cd ..
