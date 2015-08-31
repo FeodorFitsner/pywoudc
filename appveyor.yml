@@ -17,11 +17,6 @@ build: off
 
 test_script:
   - python setup.py test
-  - "dir /s /b C:\\projects\\pywoudc\\*.py | findstr /V docs | xargs %PYTHON%\\Scripts\\pep8 --ignore=E402"
-  - "dir /s /b C:\\projects\\pywoudc\\*.py | findstr /V docs | xargs %PYTHON%\\Scripts\\pyflakes"
-  - sphinx-apidoc -A "Tom Kralidis" -F -o docs pywoudc
-  - cd docs && make html
-  - cd ..
 
 on_success:
   - coverage run --source pywoudc setup.py test
