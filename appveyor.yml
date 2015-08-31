@@ -9,8 +9,9 @@ environment:
       PYTHON_ARCH: "64"
 
 install:
-  - "%PYTHON%\\Scripts\\pip.exe install -r requirements.txt"
-  - "%PYTHON%\\Scripts\\pip.exe install -r requirements-dev.txt"
+  - set PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
+  - pip.exe install -r requirements.txt
+  - pip.exe install -r requirements-dev.txt
   - python setup.py install
 
 build: off
@@ -19,5 +20,5 @@ test_script:
   - python setup.py test
 
 on_success:
-  - "%PYTHON%\\Scripts\\coverage.exe run --source pywoudc setup.py test"
-  - "%PYTHON%\\Scripts\\coverage.exe report -m"
+  - coverage.exe run --source pywoudc setup.py test
+  - coverage.exe report -m
